@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div class="col-md-3">
+    <div class="pull-right btn-group">
+        <button type="button" class="btn btn-danger">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            Limpar
+        </button>
+        <button type="button" class="btn btn-danger dropdown-toggle"
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span> <span class="sr-only">Toggle
+								Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a href="#">Limpar apenas
+                completas</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div th:fragment="todolist">
+    <ul class="list-group checked-list-box" th:each="todo : ${todos}">
+        <li class="list-group-item">
+            <div class="checkbox">
+                <label th:text="${todo.name}"> <input type="checkbox" > </input>
+                    Nome ... <span class="label label-success">Completo</span>
+                </label>
+                <div class="pull-right action-buttons">
+                    <a>
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div>
+</body>
+</html>

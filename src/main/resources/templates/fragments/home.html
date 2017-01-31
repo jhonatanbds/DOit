@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+<div th:fragment="home">
+
+<div class="row">
+    <div class="col-md-9">
+        <h3>Aumente sua lista de TODO's</h3>
+        <br></br>
+        <form class="form-inline input-group">
+            <input type="text" class="form-control" placeholder="Nova tarefa"></input>
+            <span class="input-group-btn">
+	            <button type="submit" class="btn btn-primary">
+				    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    		    </button>
+            </span>
+        </form>
+    </div>
+    <br></br>
+</div>
+<br></br>
+<div class="row">
+    <div class="col-md-8">
+        <div class="progress">
+            <div class="progress-bar progress-bar-striped active"
+                 role="progressbar" aria-valuenow="{{getPercentage()}}" aria-valuemin="0"
+                 aria-valuemax="100" ng-style="{width : ( completedPerCent() + '%' ) }">
+                <span ng-show="completedPerCent() > 0">Progresso({{completedPerCent()}}%)</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <p>
+            Organize e gerencie suas tarefas e compromissos com <strong
+                class="badge">DOit</strong> e tenha um feedback instantâneo do seu
+            progresso.
+        </p>
+    </div>
+</div>
+</div>
+</body>
+</html>

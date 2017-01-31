@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="pt-br" >
+<head>
+<meta charset="utf-8"></meta>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+<title>DOit</title>
+<!-- Bootstrap CSS -->
+<link href="../static/css/bootstrap.min.css" rel="stylesheet"></link>
+<link href="../static/css/style.css" rel="stylesheet"></link>
+</head>
+
+<body>
+<nav class="navbar navbar-toggleable-md navbar-static-top navbar-inverse bg-faded" >
+	<div class="container-fluid">
+
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="/"><badge>DOit</badge></a>
+		</div>
+
+
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Menu <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+						<li><a target="_blank" href="https://github.com/jhonatanbds"><span class="glyphicon glyphicon-user"></span> Contato</a></li>
+					</ul>
+				</li>
+                <li><a href="/ToDos">Meus ToDo's</a></li>
+			</ul>
+			<form id="signin" class="navbar-form navbar-right" role="form">
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<input id="email" type="email" class="form-control" name="email" value="" placeholder="User"></input>
+				</div>
+
+				<div class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+					<input id="password" type="password" class="form-control" name="password" value="" placeholder="Password"></input>
+				</div>
+
+				<button type="submit" class="btn btn-primary">Login</button>
+			</form>
+
+		</div>
+
+
+
+
+	</div>
+</nav>
+	<div class="container" id="wrap">
+		<div class="page-header">
+            <h1 class="float-left">
+					DOit <small>Lista de tarefas.</small>
+			</h1>
+			<br></br>
+            <div class="clearfix"></div>
+
+        </div>
+
+        <!-- Code to be replaced by Thymeleaf -->
+        <div th:if="${page} == 'home'">
+            <div th:replace="fragments/home :: home" ></div>
+        </div>
+        <div th:if="${todos} != null">
+            <div th:replace="fragments/todos :: todolist" ></div>
+        </div>
+
+    </div>
+
+    <div id="push"></div>
+
+    <div id="footer">
+		<div class="container">
+			<p class="muted credit">
+				Made with <i class="glyphicon glyphicon-heart"></i> and a lot of
+				effort by <a target="_blank" href="https://github.com/jhonatanbds">Jhonatan
+					Batista</a>. <em class="pull-right">Application made for SI 1 -
+					Lab 02 at UFCG</em>
+			</p>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="../static/js/angular.min.js"></script>
+	<script type="text/javascript" src="../static/js/app.js"></script>
+	<script src="../static/js/jquery.min.js"></script>
+	<script src="../static/js/bootstrap.min.js"></script>
+</body>
+</html>
