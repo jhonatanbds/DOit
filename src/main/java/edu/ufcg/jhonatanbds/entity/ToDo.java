@@ -1,31 +1,55 @@
 package edu.ufcg.jhonatanbds.entity;
 
-import org.springframework.data.annotation.PersistenceConstructor;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
+import edu.ufcg.jhonatanbds.entity.category.Category;
+import edu.ufcg.jhonatanbds.entity.category.StandardCategory;
+import edu.ufcg.jhonatanbds.entity.priority.MediumPriority;
+import edu.ufcg.jhonatanbds.entity.priority.Priority;
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+import org.springframework.data.annotation.Id;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Jhonatan on 10/01/2017.
  */
 
-@Document
+@Entity
 public class ToDo {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String id;
     private String name;
     private boolean completed;
     private String observation;
-    @Field("priority")
     private Priority priority;
-    @Field("category")
     private Category category;
+    private EntityFactory entityFactory;
+    private List<SubToDo> subToDos;
 
-    @PersistenceConstructor
-    public ToDo(String name, String observation) {
+    public ToDo(String name, String observation, String category, String priority) {
+        this.entityFactory = new EntityFactory();
         this.name = name;
         this.completed = false;
         this.observation = observation;
-        this.priority = Priority.MEDIUM;
-        this.category = Category.STANDARD;
+        this.priority = this.entityFactory.makePriority(priority);
+        this.category = this.entityFactory.makeCategory(category);
+        this.subToDos = new ArrayList<>();
+    }
+
+    public ToDo() {
+        this.entityFactory = new EntityFactory();
+        this.completed = false;
+        this.category = new StandardCategory();
+        this.priority = new MediumPriority();
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getName() {
@@ -48,30 +72,42 @@ public class ToDo {
         this.observation = observation;
     }
 
-    public Priority getPriority() {
-        return priority;
+    public String getPriority() {
+        return priority.toString();
     }
 
-    public void setPriority(Priority priority) {
-        this.priority = priority;
+    public void setPriority(String priority) {
+        this.priority = entityFactory.makePriority(priority);
     }
 
-    public Category getCategory() {
-        return category;
+    public String getCategory() {
+        return category.toString();
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategory(String category) {
+        this.category = entityFactory.makeCategory(category);
     }
 
     @Override
     public String toString() {
         return "ToDo{" +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", completed=" + completed + '\'' +
                 ", observation=" + observation + '\'' +
                 ", priority=" + priority + '\'' +
                 ", category=" + category +
                 '}';
+    }
+
+    public List<SubToDo> getSubToDos() {
+        return subToDos;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void addSubToDo(String name) {
+        this.subToDos.add(new SubToDo(name));
     }
 }

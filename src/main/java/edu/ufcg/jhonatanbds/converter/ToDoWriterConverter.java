@@ -1,5 +1,7 @@
 package edu.ufcg.jhonatanbds.converter;
 
+import edu.ufcg.jhonatanbds.entity.category.Category;
+import edu.ufcg.jhonatanbds.entity.priority.Priority;
 import edu.ufcg.jhonatanbds.entity.ToDo;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,7 @@
 package edu.ufcg.jhonatanbds.dao;
 
-import edu.ufcg.jhonatanbds.entity.Category;
-import edu.ufcg.jhonatanbds.entity.Priority;
+import edu.ufcg.jhonatanbds.entity.category.Category;
+import edu.ufcg.jhonatanbds.entity.priority.Priority;
 import edu.ufcg.jhonatanbds.entity.ToDo;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
@@ -22,4 +22,6 @@ public interface ToDoDAO extends MongoRepository<ToDo, String>{
     List<ToDo> findByCompleted(boolean condition);
 
     List<ToDo> findByName(String name);
+
+    List<ToDo> findById(String id);
 }

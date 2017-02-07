@@ -3,6 +3,18 @@
         height: 100%;
       }
 
+      html label.sectiontext {
+        font-weight: inherit;
+      }
+
+      .state-icon {
+          left: -5px;
+      }
+      .list-group-item-primary {
+          color: rgb(255, 255, 255);
+          background-color: rgb(66, 139, 202);
+      }
+
       .float-left {
         float:left;
       }
