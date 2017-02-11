@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"></meta>
+    <title>toDoList</title>
+</head>
+<body>
+
+<div th:fragment="toDoList">
+
+<div class="row">
+<div class="col-md-6">
+<form action="#" th:action="@{/ToDoLists}" th:object="${toDoList}" method="post" class="form-horizontal input-group">
+    <div class="form-inline input-group">
+        <input th:field="*{name}" class="form-control" type="text" placeholder="Nova Lista"></input>
+        <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                    </button>
+            </span>
+    </div>
+</form>
+</div>
+<div class="col-md-6">
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+    <div class="btn-group" role="group">
+        <a th:href="@{/deleteAllLists}">
+        <button type="button" class="btn btn-danger" >
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+            Excluir todas listas
+        </button>
+        </a>
+    </div>
+    </div>
+
+</div>
+</div>
+
+<div class="row top5">
+    <div class="col-md-12">
+        <ul class="list-group" th:each="toDoList : ${toDoLists}">
+            <li class="list-group-item" >
+                <a th:href="@{/showList(id=${toDoList.id})}" th:text="${toDoList.name}"> Nome </a>
+                <span class="pull-right action-buttons">
+                        <a th:href="@{/deleteList(id=${toDoList.id})}" class="glyphicon glyphicon-trash"></a>
+                </span>
+            </li>
+        </ul>
+    </div>
+</div>
+</div>
+
+</body>
+</html>
+

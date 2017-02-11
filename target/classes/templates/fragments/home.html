@@ -11,15 +11,15 @@
         <form action="#" th:action="@{/}" th:object="${toDo}" method="post" class="form-inline input-group">
             <input th:field="*{name}" type="text" class="form-control" placeholder="Nova tarefa"></input>
             <select th:field="*{priority}" class="selectpicker" title="Prioridade">
-                <option value="ALTA">ALTA</option>
-                <option value="MEDIA">MEDIA</option>
-                <option value="BAIXA">BAIXA</option>
+                <option value="HIGH">ALTA</option>
+                <option value="MEDIUM">MEDIA</option>
+                <option value="LOW">BAIXA</option>
             </select>
             <select th:field="*{category}" class="selectpicker" title="Categoria">
-                <option value="PADRÃO">PADRÃO</option>
-                <option value="LAZER">LAZER</option>
-                <option value="TRABALHO">TRABALHO</option>
-                <option value="COMPROMISSO">COMPROMISSO</option>
+                <option value="STANDARD">PADRÃO</option>
+                <option value="RECREATION">LAZER</option>
+                <option value="WORK">TRABALHO</option>
+                <option value="COMMITMENT">COMPROMISSO</option>
             </select>
             <span class="input-group-btn">
 	            <button type="submit" class="btn btn-primary">
@@ -35,7 +35,7 @@
                 class="badge">DOit</strong> e tenha um feedback instantâneo do seu
             progresso.
         </p>
-        <a th:href="@{/ToDos}" class="btn btn-primary">Visualizar todas tarefas <span class="glyphicon glyphicon-chevron-right"></span></a>
+        <a th:href="@{/ToDos}" class="btn btn-primary top5">Visualizar todas tarefas <span class="glyphicon glyphicon-chevron-right"></span></a>
     </div>
 </div>
 <br></br>
@@ -46,7 +46,7 @@
             <ul class="list-group checked-list-box" th:each="index : ${#numbers.sequence(0, numToDos - 1)}">
                 <li class="list-group-item justify-content-between inline" >
                     <a th:href="@{/indexComplete(id=${reversedToDos[index].id})}" class="glyphicon glyphicon-check"></a>
-                    <label th:text="${reversedToDos[index].name}"> Nome </label>
+                    <i th:text="${reversedToDos[index].name}"> Nome </i>
                     <span th:if="${reversedToDos[index].completed}" class="label label-success">
                             CONCLUIDO
                     </span>

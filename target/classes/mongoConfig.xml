@@ -13,7 +13,7 @@
 
     <mongo:mongo id="mongo" host="localhost" />
 
-    <mongo:db-factory id="mongoDbFactory" dbname="test" mongo-ref="mongo" />
+    <mongo:db-factory id="mongoDbFactory" dbname="DOit" mongo-ref="mongo" />
 
     <bean id="gridFsTemplate" class="org.springframework.data.mongodb.gridfs.GridFsTemplate">
         <constructor-arg ref="mongoDbFactory" />
@@ -27,13 +27,8 @@
 
     <bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
 
-    <mongo:repositories base-package="org.baeldung.repository" mongo-template-ref="mongoTemplate"/>
+    <mongo:repositories base-package="edu.ufcg.jhonatanbds.dao" mongo-template-ref="mongoTemplate"/>
 
-    <bean class="org.baeldung.event.CascadeSaveMongoEventListener">
-    </bean>
-
-    <mongo:mapping-converter id="mongoConverter" base-package="org.baeldung.converter">
-        <mongo:custom-converters base-package="org.baeldung.converter"/>
-    </mongo:mapping-converter>
+    <bean class="edu.ufcg.jhonatanbds.dao.ToDoListDAO" id="toDoListRepository"></bean>
 
 </beans>

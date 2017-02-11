@@ -35,7 +35,17 @@
 						<li><a target="_blank" href="https://github.com/jhonatanbds"><span class="glyphicon glyphicon-user"></span> Contato</a></li>
 					</ul>
 				</li>
-                <li><a href="/ToDos">Meus ToDo's</a></li>
+                <li><a href="/ToDos">Minhas tarefas</a></li>
+
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Minhas listas <span class="caret"></span></a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a th:href="@{/ToDoLists}"><span class="glyphicon glyphicon-plus"></span> Nova lista</a></li>
+						<li role="separator" class="divider"></li>
+						<li  th:each="toDoList : ${toDoLists}" ><a th:text="${toDoList.name}"  th:href="@{/showList(id=${toDoList.id})}"></a></li>
+					</ul>
+				</li>
+				<li><a  th:text="|Tarefas a cumprir: ${toComplete}|" href="#"></a></li>
 			</ul>
 			<form id="signin" class="navbar-form navbar-right" role="form">
 				<div class="input-group">
@@ -71,9 +81,12 @@
         <div th:if="${page} == 'home'">
             <div th:replace="fragments/home :: home" ></div>
         </div>
-        <div th:if="${page} == 'todolist'">
+        <div th:if="${page} == 'toDos'">
             <div th:replace="fragments/todos :: todolist" ></div>
         </div>
+		<div th:if="${page} == 'toDoLists'">
+			<div th:replace="fragments/toDoList :: toDoList" ></div>
+		</div>
 
     </div>
 

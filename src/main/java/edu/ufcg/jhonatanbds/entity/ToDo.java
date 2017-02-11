@@ -1,12 +1,9 @@
 package edu.ufcg.jhonatanbds.entity;
 
-import edu.ufcg.jhonatanbds.entity.category.Category;
-import edu.ufcg.jhonatanbds.entity.category.StandardCategory;
-import edu.ufcg.jhonatanbds.entity.priority.MediumPriority;
-import edu.ufcg.jhonatanbds.entity.priority.Priority;
-import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 import org.springframework.data.annotation.Id;
-
+import org.springframework.data.mongodb.core.mapping.DBRef;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,35 +14,31 @@ import java.util.List;
  * Created by Jhonatan on 10/01/2017.
  */
 
-@Entity
-public class ToDo {
+@Document(collection = "newDB")
+public class ToDo implements Comparable<ToDo> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
+    @Field(value = "priority")
+    private String priority;
+    @Field(value = "category")
+    private String category;
     private String name;
-    private boolean completed;
+    @Field(value = "observation")
     private String observation;
-    private Priority priority;
-    private Category category;
-    private EntityFactory entityFactory;
-    private List<SubToDo> subToDos;
-
-    public ToDo(String name, String observation, String category, String priority) {
-        this.entityFactory = new EntityFactory();
-        this.name = name;
-        this.completed = false;
-        this.observation = observation;
-        this.priority = this.entityFactory.makePriority(priority);
-        this.category = this.entityFactory.makeCategory(category);
-        this.subToDos = new ArrayList<>();
-    }
+    @DBRef
+    private ToDoList associatedList;
+    private String associatedListId;
+    private boolean completed;
+    @DBRef
+    private List<SubToDo> subToDos = new ArrayList<>();
 
     public ToDo() {
-        this.entityFactory = new EntityFactory();
-        this.completed = false;
-        this.category = new StandardCategory();
-        this.priority = new MediumPriority();
+    }
+
+    public void setSubToDos(List<SubToDo> subToDos) {
+        this.subToDos = subToDos;
     }
 
     public void setName(String name) {
@@ -73,30 +66,19 @@ public class ToDo {
     }
 
     public String getPriority() {
-        return priority.toString();
+        return priority;
     }
 
     public void setPriority(String priority) {
-        this.priority = entityFactory.makePriority(priority);
+        this.priority = priority;
     }
 
     public String getCategory() {
-        return category.toString();
+        return category;
     }
 
     public void setCategory(String category) {
-        this.category = entityFactory.makeCategory(category);
-    }
-
-    @Override
-    public String toString() {
-        return "ToDo{" +
-                "name='" + name + '\'' +
-                ", completed=" + completed + '\'' +
-                ", observation=" + observation + '\'' +
-                ", priority=" + priority + '\'' +
-                ", category=" + category +
-                '}';
+        this.category = category;
     }
 
     public List<SubToDo> getSubToDos() {
@@ -107,7 +89,54 @@ public class ToDo {
         return id;
     }
 
-    public void addSubToDo(String name) {
-        this.subToDos.add(new SubToDo(name));
+    public void addSubToDo(SubToDo subToDo) {
+        this.subToDos.add(subToDo);
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public ToDoList getAssociatedList() {
+        return associatedList;
+    }
+
+    public void setAssociatedList(ToDoList associatedList) {
+        this.associatedList = associatedList;
+    }
+
+    public String getAssociatedListId() {
+        return associatedListId;
+    }
+
+    public void setAssociatedListId(String associatedListId) {
+        this.associatedListId = associatedListId;
+    }
+
+    @Override
+    public int compareTo(ToDo o) {
+        return this.name.toLowerCase().compareTo(o.getName().toLowerCase());
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ToDo toDo = (ToDo) o;
+
+        return id != null ? id.equals(toDo.id) : toDo.id == null;
+    }
+
+    @Override
+    public int hashCode() {
+        return id != null ? id.hashCode() : 0;
+    }
+
+    @Override
+    public String toString() {
+        return "ToDo [id=" + id + ", name=" + name + ", associatedList=" + associatedList + ", associatedListId=" + associatedListId + ", observation=" + observation + ", priority=" + priority +
+                ", category=" + category + "]";
     }
 }
+
