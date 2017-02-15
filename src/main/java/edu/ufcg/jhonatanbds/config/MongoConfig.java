@@ -23,12 +23,12 @@ public class MongoConfig extends AbstractMongoConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "test";
+        return "heroku_0plbsx65";
     }
 
     @Override
     public Mongo mongo() throws Exception {
-        return new MongoClient("127.0.0.1", 27017);
+        return new MongoClient("ec2-54-198-241-187.compute-1.amazonaws.com", 53689);
     }
 
     @Override
