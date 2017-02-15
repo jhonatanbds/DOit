@@ -16,6 +16,11 @@ public class ToDoWriterConverter implements Converter<ToDo, DBObject> {
         final DBObject dbObject = new BasicDBObject();
         dbObject.put("name", toDo.getName());
         dbObject.put("observation", toDo.getObservation());
+        dbObject.put("completed", toDo.isCompleted());
+        dbObject.put("priority", toDo.getPriority());
+        dbObject.put("category", toDo.getCategory());
+        dbObject.put("associatedList", toDo.getAssociatedList());
+        dbObject.put("associatedListId", toDo.getAssociatedListId());
         dbObject.removeField("_class");
         return dbObject;
     }
