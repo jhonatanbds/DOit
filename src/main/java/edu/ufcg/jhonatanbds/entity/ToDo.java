@@ -14,7 +14,7 @@ import java.util.List;
  * Created by Jhonatan on 10/01/2017.
  */
 
-@Document(collection = "newDB")
+@Document(collection = "ToDos")
 public class ToDo implements Comparable<ToDo> {
 
     @Id
