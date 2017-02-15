@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f95f3719-ccf2-4aa6-9e7c-c1ec4eac900e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/ufcg/jhonatanbds/converter/ToDoWriterConverter.java" afterPath="$PROJECT_DIR$/src/main/java/edu/ufcg/jhonatanbds/converter/ToDoWriterConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/ufcg/jhonatanbds/config/MongoConfig.java" afterPath="$PROJECT_DIR$/src/main/java/edu/ufcg/jhonatanbds/config/MongoConfig.java" />
     </list>
     <ignored path="DOit.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,10 +53,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
+            <state relative-caret-position="357">
               <caret line="21" column="21" lean-forward="false" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="21" />
               <folding />
             </state>
@@ -77,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MongoConfig.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MongoConfig.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/ufcg/jhonatanbds/config/MongoConfig.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="40" column="32" lean-forward="false" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
+            <state relative-caret-position="51">
+              <caret line="30" column="57" lean-forward="false" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -125,11 +123,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/edu/ufcg/jhonatanbds/config/MongoConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/ufcg/jhonatanbds/entity/ToDo.java" />
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/src/main/java/edu/ufcg/jhonatanbds/converter/ToDoWriterConverter.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/ufcg/jhonatanbds/config/MongoConfig.java" />
       </list>
     </option>
   </component>
@@ -799,14 +797,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/ufcg/jhonatanbds/config/MongoConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="40" column="32" lean-forward="false" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/ufcg/jhonatanbds/converter/ToDoWriterConverter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -817,8 +807,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
+        <state relative-caret-position="357">
           <caret line="21" column="21" lean-forward="false" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/ufcg/jhonatanbds/config/MongoConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="30" column="57" lean-forward="false" selection-start-line="30" selection-start-column="57" selection-end-line="30" selection-end-column="57" />
           <folding />
         </state>
       </provider>

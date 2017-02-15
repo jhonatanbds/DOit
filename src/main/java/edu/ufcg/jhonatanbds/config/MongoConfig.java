@@ -23,12 +23,12 @@ public class MongoConfig extends AbstractMongoConfiguration {
 
     @Override
     protected String getDatabaseName() {
-        return "heroku_0plbsx65";
+        return "heroku_zv2trqp4";
     }
 
     @Override
     public Mongo mongo() throws Exception {
-        return new MongoClient("ds153689.mlab.com", 53689);
+        return new MongoClient("ds153729.mlab.com", 53729);
     }
 
     @Override
