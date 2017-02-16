@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f95f3719-ccf2-4aa6-9e7c-c1ec4eac900e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/ufcg/jhonatanbds/config/MongoConfig.java" afterPath="$PROJECT_DIR$/src/main/java/edu/ufcg/jhonatanbds/config/MongoConfig.java" />
-    </list>
+    <list default="true" id="f95f3719-ccf2-4aa6-9e7c-c1ec4eac900e" name="Default" comment="" />
     <ignored path="DOit.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
