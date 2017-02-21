@@ -1,15 +1,27 @@
 package edu.ufcg.jhonatanbds.controller;
 
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.pdf.PdfWriter;
 import edu.ufcg.jhonatanbds.comparator.PriorityComparator;
+import edu.ufcg.jhonatanbds.converter.ToDosToPDFConverter;
 import edu.ufcg.jhonatanbds.entity.SubToDo;
 import edu.ufcg.jhonatanbds.entity.ToDo;
 import edu.ufcg.jhonatanbds.entity.ToDoList;
 import edu.ufcg.jhonatanbds.service.ToDoListService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.nio.file.Files;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,7 +46,16 @@ public class DOitController {
         model.addAttribute("toDoLists", toDoListService.getAllLists());
         model.addAttribute("toDo", new ToDo());
         model.addAttribute("toComplete", this.toDoListService.toComplete());
+        model.addAttribute("download", "Baixar todas tarefas");
         return "index";
+    }
+
+    @GetMapping("/downloadToDos")
+    public HttpEntity<byte[]> createPdf(@RequestParam(value = "id", required = false) String id) throws IOException, DocumentException {
+        if (id == null)
+            return ToDosToPDFConverter.createPDF(this.toDoListService.getAllToDos());
+        else
+            return ToDosToPDFConverter.createPDF(this.toDoListService.getToDoList(id));
     }
 
     @GetMapping("ToDoLists")

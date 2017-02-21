@@ -45,14 +45,9 @@ public class ToDoListService {
 
 
     public void addToDo(ToDo toDo) {
-
-        if (this.toDoListDAO.findAll().size() == 0)
-            toDoListDAO.save(new ToDoList("all"));
-
         if (toDo.getId() == null)
             this.toDoDAO.save(toDo);
-
-        updateToDo(toDo);
+        else updateToDo(toDo);
     }
 
     private void updateToDo(ToDo toDo) {
@@ -150,10 +145,6 @@ public class ToDoListService {
 
     public List<ToDo> getAllToDos() {
         return this.toDoDAO.findAll();
-    }
-
-    public ToDoList getMainList() {
-        return this.toDoListDAO.findByName("all").get(0);
     }
 
     public void addSubToDo(String id, SubToDo subToDo) {

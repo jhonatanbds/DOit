@@ -135,8 +135,28 @@ public class ToDo implements Comparable<ToDo> {
 
     @Override
     public String toString() {
-        return "ToDo [id=" + id + ", name=" + name + ", associatedList=" + associatedList + ", associatedListId=" + associatedListId + ", observation=" + observation + ", priority=" + priority +
-                ", category=" + category + "]";
+        String toDo = new String();
+        toDo += "Tarefa: " + name;
+
+        if (associatedList == null)
+            toDo += ";    Associada à lista: Sem lista";
+        else toDo += ";    Associada à lista: " + associatedList.getName();
+
+        toDo += "    Concluida: " + completed;
+
+        if (observation == null)
+            toDo += "\nDescrição: Sem descrição";
+        else toDo += "\nDescrição: " + observation;
+
+        if (priority.equals(""))
+            toDo += "    Prioridade: Sem prioridade";
+        else toDo += "    Prioridade: " + priority;
+
+        if (category.equals(""))
+            toDo += "    Categoria: Sem categoria";
+        else toDo += "    Categoria: " + category;
+
+        return toDo;
     }
 }
 

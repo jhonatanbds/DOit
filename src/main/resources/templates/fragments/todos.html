@@ -83,31 +83,26 @@
                 <h3 class="h3side side" th:text="${detailedToDo.name}">Nenhuma tarefa selecionada</h3>
                 <span class="spanside side"><a th:href="@{/editToDo(id=${detailedToDo.id})}" class="glyphicon glyphicon-pencil"></a></span>
                 <br></br>
-                    <div class="row">
-                        <label for="descript" class="control-label col-sm-4">Descrição:</label>
-                        <div class="col-sm-8">
-                            <h5 id="descript" th:text="${detailedToDo.observation}"></h5>
-                        </div>
-                    </div>
-                    <div class="row">
-                            <label for="categ" class="control-label col-sm-4">Categoria:</label>
-                            <div class="col-sm-8">
-                                <h5 id="categ" th:text="${detailedToDo.category}"></h5>
-                            </div>
-                    </div>
-                    <div class="row">
-                            <label for="prior" class="control-label col-sm-4">Prioridade:</label>
-                            <div class="col-sm-8">
-                                <h5 id="prior" th:text="${detailedToDo.priority}"></h5>
-                            </div>
-                    </div>
-                    <div class="row">
-                        <label for="list" class="control-label col-sm-4">Lista :</label>
-                            <div class="col-sm-8" th:if="${detailedToDo.associatedList} != null">
-                                <h5 id="list" th:text="${detailedToDo.associatedList.name}"></h5>
-                            </div>
-                    </div>
-
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td>Descrição: </td>
+                        <td th:text="${detailedToDo.observation}">Doe</td>
+                    </tr>
+                    <tr>
+                        <td>Categoria: </td>
+                        <td th:text="${detailedToDo.category}">Moe</td>
+                    </tr>
+                    <tr>
+                        <td>Prioridade: </td>
+                        <td th:text="${detailedToDo.priority}">Dooley</td>
+                    </tr>
+                    <tr th:if="${detailedToDo.associatedList} != null">
+                        <td>Lista: </td>
+                        <td th:text="${detailedToDo.associatedList.name}">Dooley</td>
+                    </tr>
+                    </tbody>
+                </table>
                 <form th:action="@{/detailToDo(id=${toDoId})}" th:object="${subToDo}" method="post">
                 <div class="form-inline input-group">
                     <input th:field="*{name}" class="form-control" type="text" placeholder="Subtarefa"></input>
